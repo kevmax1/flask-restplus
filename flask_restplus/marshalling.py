@@ -228,7 +228,7 @@ class marshal_with(object):
 
     see :meth:`flask_restplus.marshal`
     """
-    def __init__(self, fields, envelope=None, skip_none=False, mask=None, ordered=False):
+    def __init__(self, fields, envelope=None, skip_none=False, mask=None, skip=True, ordered=False):
         """
         :param fields: a dict of whose keys will make up the final
                        serialized response output
@@ -239,7 +239,7 @@ class marshal_with(object):
         self.envelope = envelope
         self.skip_none = skip_none
         self.ordered = ordered
-        self.mask = Mask(mask, skip=True)
+        self.mask = Mask(mask, skip=skip)
 
     def __call__(self, f):
         @wraps(f)
